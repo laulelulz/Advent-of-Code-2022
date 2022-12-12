@@ -1,4 +1,3 @@
-# %%
 input_string = '''GwrhJPDJCZFRcwfZWV
 LjnQlqNpjjmpmQlLlqNfZRvQcTWcTSTTZcSQcZ
 nNqjdspspngnmjmslqmjjjCDGrHPHMGddGCMCGPPPJWC
@@ -299,10 +298,8 @@ TVcTfHNFcwtjMhTvgbHZsBbWmmZbnH
 WsQgstQmvQJnssWsWPzhRzhBjZBSBRZSnj
 qwCNqFwDrrlDrFPvRhTSPPzLRz
 bppqwppCddlvfbDNVgmMmtMfVVmfmVWW'''
-
 input_list = input_string.splitlines()
 
-# %%
 # Assign priorities -> list of characters, priority is corresponding index
 
 abc = "abcdefghijklmnopqrstuvwxyz"
@@ -316,7 +313,6 @@ for character in abc.upper():
 
     priorities.append(character)
 
-# %%
 # Separate rucksack into 2 compartments
 
 
@@ -340,7 +336,6 @@ def second_compartment(rucksack: str):
 
         return second
 
-# %%
 # Parse rucksack compartments into list in the form list[rucksack][compartment]
 
 compartments = []
@@ -351,7 +346,6 @@ for i in range(len(input_list)):
     compartments[i].append(first_compartment(input_list[i]))
     compartments[i].append(second_compartment(input_list[i]))
 
-# %%
 # Compare contents of all strings in a list and return first common character
 
 def compare(strings: list):
@@ -376,7 +370,6 @@ def compare(strings: list):
 
     return " "
 
-# %%
 # Calculate the sum of the priorities of the common items in each rucksack
 
 sum = 0
@@ -388,7 +381,6 @@ for i in range(len(input_list)):
 
 print (sum)
 
-# %%
 # Sort elves into groups of 'group_size'
 
 def sort_group (original_list: list, group_size: int):
@@ -420,7 +412,6 @@ def sort_group (original_list: list, group_size: int):
 
 
 
-# %%
 groups = sort_group(input_list, 3)
 
 sum2 = 0
