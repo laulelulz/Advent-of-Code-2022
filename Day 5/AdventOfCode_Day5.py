@@ -1,6 +1,8 @@
+import copy
+
 # Read input-file into list of lines
 
-INPUT_FILE = "Day 5\example.txt"
+INPUT_FILE = "Day 5\input.txt"
 
 with open(INPUT_FILE, 'r') as file:
 
@@ -51,29 +53,28 @@ for i in range(number_of_stacks):
 
 def move_item(stack_list: list, number_of_crates: int, stack_origin: int, stack_destination: int):
 
-    stack_list1 = stack_list.copy()
-
     for i in range(number_of_crates):
 
-        stack_list1[stack_destination-1].append(stack_list1[stack_origin-1].pop())
+        stack_list[stack_destination-1].append(stack_list[stack_origin-1].pop())
     
-    return stack_list1
+    return stack_list
 
 
 # define function for moving multiple items from one stack to another at once (part 2)
 
 def move_item2(stack_list: list, number_of_crates: int, stack_origin: int, stack_destination: int):
 
-    stack_list1 = stack_list.copy()
-
     for i in range(number_of_crates):
 
-        stack_list1[stack_destination-1].append(stack_list1[stack_origin-1].pop(i-number_of_crates))
+        stack_list[stack_destination-1].append(stack_list[stack_origin-1].pop(i-number_of_crates))
 
-    return stack_list1
+    return stack_list
 
 
 # feed intructions to move_item function
+
+stacks_new1 = copy.deepcopy(stacks_sorted)
+stacks_new2 = copy.deepcopy(stacks_sorted)
 
 for line in moves:
 
@@ -85,8 +86,8 @@ for line in moves:
 
             input_parameters.append(int(word))
     
-    final_stack1 = move_item(stacks_sorted, input_parameters[0], input_parameters[1], input_parameters[2])
-    final_stack2 = move_item2(stacks_sorted, input_parameters[0], input_parameters[1], input_parameters[2])
+    final_stack1 = move_item(stacks_new1, input_parameters[0], input_parameters[1], input_parameters[2])
+    final_stack2 = move_item2(stacks_new2, input_parameters[0], input_parameters[1], input_parameters[2])
 
 
 # Create answer string (top crate of each stack)
